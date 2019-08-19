@@ -1,6 +1,8 @@
 package com.codegym.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "city")
@@ -8,10 +10,15 @@ public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @NotEmpty
     private String name;
+    @DecimalMin("0.1")
     private Double acreage;
+    @DecimalMin("0.1")
     private Double population;
+    @DecimalMin("0.1")
     private Double GDP;
+    @NotEmpty
     private String detail;
     @ManyToOne
     @JoinColumn(name = "country_id")

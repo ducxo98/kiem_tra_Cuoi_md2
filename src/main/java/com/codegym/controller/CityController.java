@@ -47,11 +47,13 @@ public class CityController {
             ModelAndView modelAndView = new ModelAndView("/city/create");
             return modelAndView;
         }
-        cityService.save(city);
-        ModelAndView modelAndView = new ModelAndView("/city/create");
-        modelAndView.addObject("city", new City());
-        modelAndView.addObject("message", "New staff created successfully");
-        return modelAndView;
+        else {
+            cityService.save(city);
+            ModelAndView modelAndView = new ModelAndView("/city/create");
+            modelAndView.addObject("city", new City());
+            modelAndView.addObject("message", "New staff created successfully");
+            return modelAndView;
+        }
     }
     @GetMapping("/edit-city/{id}")
     public ModelAndView showEditForm(@PathVariable Long id) {
@@ -68,12 +70,18 @@ public class CityController {
     }
 
     @PostMapping("/edit-city")
-    public ModelAndView updateCity(@ModelAttribute("city") City city) {
-        cityService.save(city);
-        ModelAndView modelAndView = new ModelAndView("/city/edit");
-        modelAndView.addObject("city", city);
-        modelAndView.addObject("message", "City updated successfully");
-        return modelAndView;
+    public ModelAndView updateCity(@Validated @ModelAttribute("city") City city,BindingResult bindingResult) {
+        if (bindingResult.hasFieldErrors()) {
+            ModelAndView modelAndView = new ModelAndView("/city/edit");
+            return modelAndView;
+        }
+        else {
+            cityService.save(city);
+            ModelAndView modelAndView = new ModelAndView("/city/edit");
+            modelAndView.addObject("city", city);
+            modelAndView.addObject("message", "City updated successfully");
+            return modelAndView;
+        }
     }
 
     @GetMapping("/delete-city/{id}")

@@ -1,6 +1,7 @@
 package com.codegym.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @Entity
@@ -9,6 +10,7 @@ public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @NotEmpty
     private String name;
     @OneToMany(targetEntity = City.class)
     private List<City>cities;

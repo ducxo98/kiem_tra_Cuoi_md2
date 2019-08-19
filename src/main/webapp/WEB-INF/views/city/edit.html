@@ -46,25 +46,25 @@
         <tr>
             <td>Acreage:</td>
             <td><input type="text" th:field="*{acreage}"/></td>
-<!--            <td th:if="${#fields.hasErrors('cmnd')}" th:errors="*{cmnd}">Name Error</td>-->
+            <td th:if="${#fields.hasErrors('acreage')}" th:errors="*{acreage}">Name Error</td>
 
         </tr>
         <tr>
             <td>Population:</td>
             <td><input type="text" th:field="*{population}"/></td>
-<!--            <td th:if="${#fields.hasErrors('code')}" th:errors="*{code}">Name Error</td>-->
+            <td th:if="${#fields.hasErrors('population')}" th:errors="*{population}">Name Error</td>
 
         </tr>
         <tr>
             <td>GDP:</td>
             <td><input type="text" th:field="*{GDP}"/></td>
-<!--            <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name Error</td>-->
+            <td th:if="${#fields.hasErrors('GDP')}" th:errors="*{GDP}">Name Error</td>
 
         </tr>
         <tr>
             <td>Detail:</td>
             <td><input type="text" th:field="*{detail}"/></td>
-<!--            <td th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}">Name Error</td>-->
+            <td th:if="${#fields.hasErrors('detail')}" th:errors="*{detail}">Name Error</td>
 
         </tr>
         <tr>
