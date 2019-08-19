@@ -34,7 +34,7 @@
             <td th:text="${city.population}"></td>
             <td th:text="${city.GDP}"></td>
             <td th:text="${city.detail}"></td>
-            <td th:text="${city.country.name}"></td>
+            <td><span th:if="${city.country!=null}" th:text="${city.country.name}"></span></td>
             <td><a th:href="@{/edit-city/__${city.id}__ }">Edit</a></td>
             <td><a th:href="@{/delete-city/__${city.id}__ }">Delete</a></td>
         </tr>
