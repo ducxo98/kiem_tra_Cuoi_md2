@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit city</title>
+</head>
+<body>
+<h1>Edit city</h1>
+<p>
+    <a href="/cities">list city</a>
+</p>
+<!--<p>-->
+<!--    <a href="/create-department">Create department</a><br>-->
+
+<!--</p>-->
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/edit-city}" th:object="${city}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <!--        <td>Department:</td>-->
+        <!--        <td>-->
+        <!--            <select th:field="*{department}">-->
+        <!--                <option th:each="p : ${departments}" th:value="${p.id}"-->
+        <!--                        th:text="${p.nameDepartment}"></option>-->
+        <!--            </select>-->
+        <!--        </td>-->
+        <tr>
+            <td>Name city:</td>
+            <td><input type="text" th:field="*{name}"/></td>
+<!--            <td th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Name Error</td>-->
+
+        </tr>
+        <tr>
+            <td>Country:</td>
+            <td>
+                <select name="country">
+                    <option th:each="p : ${countries}"
+                            th:value="${p.id}"
+                            th:text="${p.name}"
+                            th:selected="(${p.id} == *{country.id})"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Acreage:</td>
+            <td><input type="text" th:field="*{acreage}"/></td>
+<!--            <td th:if="${#fields.hasErrors('cmnd')}" th:errors="*{cmnd}">Name Error</td>-->
+
+        </tr>
+        <tr>
+            <td>Population:</td>
+            <td><input type="text" th:field="*{population}"/></td>
+<!--            <td th:if="${#fields.hasErrors('code')}" th:errors="*{code}">Name Error</td>-->
+
+        </tr>
+        <tr>
+            <td>GDP:</td>
+            <td><input type="text" th:field="*{GDP}"/></td>
+<!--            <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name Error</td>-->
+
+        </tr>
+        <tr>
+            <td>Detail:</td>
+            <td><input type="text" th:field="*{detail}"/></td>
+<!--            <td th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}">Name Error</td>-->
+
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Update city"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
